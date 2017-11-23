@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#800020">
+
+        <!--  Header  Starts-->
+        <LinearLayout
+            android:id="@+id/header"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#800020"
+            android:orientation="horizontal"
+            android:paddingBottom="5dip"
+            android:paddingTop="5dip"></LinearLayout>
+        <!--  Header Ends -->
+
+
+        <!-- Login Form -->
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/header"
+            android:orientation="vertical"
+            android:padding="10dip">
+
+            <!--  Name Label -->
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Name"
+                    android:textColor="#ffffff" />
+
+                <EditText
+                    android:id="@+id/edtName"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="0.06" />
+            </LinearLayout>
+
+
+            <!--  Age & Gender Label -->
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="14.0dp"
+                    android:text="Age"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/edtAge"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="5.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textColor="#ffffff" />
+
+                <EditText
+                    android:id="@+id/edtGender"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Race"
+                    android:textColor="#ffffff" />
+
+                <EditText
+                    android:id="@+id/edtRace"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="12.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Height"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"/>
+                <EditText
+                    android:id="@+id/edtHeight"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="number"
+                    android:textColor="@android:color/black" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_gravity="center"
+                    android:text="ft"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weight"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:textColorLink="@android:color/white"/>
+                <EditText
+                    android:id="@+id/edtWeight"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="number"
+                    android:textColor="@android:color/black" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="1.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_gravity="center"
+                    android:text="lb"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"/>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Status"
+                    android:textColor="#ffffff"
+                    android:layout_gravity="center"/>
+                <EditText
+                    android:id="@+id/edtStatus"
+                    android:layout_width="125dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="text"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Education"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff"/>
+                <EditText
+                    android:id="@+id/edtEducation"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="8.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="text"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="General Health"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff" />
+                <EditText
+                    android:id="@+id/edtHealth"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="8.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:gravity="top|left"
+                    android:scrollHorizontally="false"
+                    android:scrollbars="vertical"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Any Diagonised&#10;Disease?"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff" />
+                <EditText
+                    android:id="@+id/edtDiagDisease"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="8.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:gravity="top|left"
+                    android:scrollHorizontally="false"
+                    android:scrollbars="vertical"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Any Medication?"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff" />
+                <EditText
+                    android:id="@+id/edtMedication"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="1.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="textMultiLine"
+                    android:lines="2"
+                    android:gravity="top|left"
+                    android:scrollHorizontally="false"
+                    android:scrollbars="vertical"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Do you drink&#10;Alcohol?"
+                    android:layout_gravity="center"
+                    android:textColor="#ffffff" />
+
+                <EditText
+                    android:id="@+id/edtAlcoholUse"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="25.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:layout_marginTop="5dip"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"
+                    android:textCursorDrawable="@color/colorPrimaryDark" />
+            </LinearLayout>
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
+
+                <Button
+                    android:id="@+id/btnSkip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:text="Skip"
+                    android:textSize="20dip" />
+                <!-- Login button -->
+                <Button
+                    android:id="@+id/btnSubmit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:text="Submit History"
+                    android:textSize="20dip" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <!-- Login Form Ends -->
+    </RelativeLayout>
+</ScrollView>
