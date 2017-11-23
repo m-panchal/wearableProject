@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -69,13 +70,23 @@ public class BluetoothActivity extends AppCompatActivity {
                            .setIcon(android.R.drawable.ic_dialog_alert)
                            .show();
         }
-        else {
-            if(!mBluetoothAdapter.isEnabled()) {
-                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+
+        Button scanButton = (Button) findViewById(R.id.buttonScan);
+        scanButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onStart();
             }
-            listDevices();
+        });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(!mBluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
+        else listDevices();
     }
 
     @Override
@@ -93,18 +104,18 @@ public class BluetoothActivity extends AppCompatActivity {
 
     @TargetApi(Build.VERSION_CODES.M)
     private void listDevices() {
+        ((ProgressBar) findViewById(R.id.progressBar)).setVisibility(View.VISIBLE);
         // Get a set of currently paired devices
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 
         // If there are paired devices, add each one to the ArrayAdapter
         if (pairedDevices.size() > 0) {
+            mBTPairedDevices.clear();
             for (BluetoothDevice device : pairedDevices) {
                 mBTPairedDevices.add(device);
                 mPairedDeviceListAdapter.notifyDataSetChanged();
             }
             ((TextView) findViewById(R.id.tvNoPairedDevices)).setVisibility(View.GONE);
-        } else {
-            ((TextView) findViewById(R.id.tvNoPairedDevices)).setVisibility(View.VISIBLE);
         }
 
         if (mBluetoothAdapter.isDiscovering()) {

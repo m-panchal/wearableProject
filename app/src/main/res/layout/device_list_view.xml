@@ -1,80 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="16dp"
     android:paddingLeft="64dp"
     android:paddingRight="64dp"
-    android:paddingTop="16dp">
+    android:paddingTop="32dp">
 
-    <TextView
-    android:id="@+id/pairedTextView"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Paired devices"
-    android:textSize="25sp"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/tvNoPairedDevices"
-    android:text="No paired devices"
-    android:visibility="gone"
-    android:textSize="18sp"
-    android:layout_marginTop="5dp" />
-
-    <ListView
-    android:id="@+id/lvPairedDevices"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="16dp">
-
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Available devices"
-            android:textSize="25sp" />
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/pairedTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Paired devices"
+                android:textSize="25sp"/>
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignRight="@+id/textView"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true" />
+            <TextView
+                android:id="@+id/tvNoPairedDevices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="No paired devices"
+                android:textSize="18sp"
+                android:visibility="gone" />
 
-        <TextView
+            <ListView
+                android:id="@+id/lvPairedDevices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+        </LinearLayout>
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tvNoNewDevices"
-            android:text="No devices nearby"
-            android:visibility="gone"
-            android:textSize="18sp"
-            android:layout_below="@+id/textView"
-            android:layout_marginTop="5dp" />
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingTop="10dp">
 
-        <ListView
-            android:id="@+id/lvNewDevices"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Available devices"
+                android:textSize="25sp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Scan"
-            android:textSize="20sp"/>
-    </RelativeLayout>
-</LinearLayout>
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/textView" />
+
+            <TextView
+                android:id="@+id/tvNoNewDevices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_marginTop="5dp"
+                android:text="No devices nearby"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <ListView
+                android:id="@+id/lvNewDevices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView"
+                android:orientation="vertical" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Scan"
+        android:textSize="20sp"/>
+</RelativeLayout>
