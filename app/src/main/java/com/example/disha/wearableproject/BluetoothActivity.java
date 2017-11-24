@@ -45,6 +45,7 @@ public class BluetoothActivity extends AppCompatActivity {
     private DeviceListAdapter mPairedDeviceListAdapter;
     private ListView pairedListView;
     private ListView newListView;
+    private Boolean isActivityRestarting = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,7 @@ public class BluetoothActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Goto next activity and turn off the bluetooth
                 mBluetoothAdapter.disable();
+                startActivity(new Intent(getApplicationContext(), TestListActivity.class));
             }
         });
     }
@@ -97,11 +99,19 @@ public class BluetoothActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        if(!mBluetoothAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+        if (!isActivityRestarting) {
+            if (!mBluetoothAdapter.isEnabled()) {
+                Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+            } else listDevices();
         }
-        else listDevices();
+        else isActivityRestarting = false;
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        isActivityRestarting = true;
     }
 
     @Override
@@ -112,7 +122,9 @@ public class BluetoothActivity extends AppCompatActivity {
                 listDevices();
             }
             if(resultCode == RESULT_CANCELED) {
-                Log.d(TAG, "onActivityResult: Error occurred while enabling bluetooth.");
+                Log.d(TAG, "onActivityResult: User denied or error occurred while enabling bluetooth.");
+                ((ProgressBar) findViewById(R.id.progressBar)).setVisibility(View.INVISIBLE);
+                listPairedDevices();
             }
         }
     }
@@ -120,18 +132,8 @@ public class BluetoothActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.M)
     private void listDevices() {
         ((ProgressBar) findViewById(R.id.progressBar)).setVisibility(View.VISIBLE);
-        // Get a set of currently paired devices
-        Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
 
-        // If there are paired devices, add each one to the ArrayAdapter
-        if (pairedDevices.size() > 0) {
-            mBTPairedDevices.clear();
-            for (BluetoothDevice device : pairedDevices) {
-                mBTPairedDevices.add(device);
-                mPairedDeviceListAdapter.notifyDataSetChanged();
-            }
-            ((TextView) findViewById(R.id.tvNoPairedDevices)).setVisibility(View.GONE);
-        }
+        listPairedDevices();
 
         if (mBluetoothAdapter.isDiscovering()) {
             mBluetoothAdapter.cancelDiscovery();
@@ -152,6 +154,21 @@ public class BluetoothActivity extends AppCompatActivity {
         mBluetoothAdapter.startDiscovery();
     }
 
+    private void listPairedDevices() {
+        // Get a set of currently paired devices
+        Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
+
+        // If there are paired devices, add each one to the ArrayAdapter
+        if (pairedDevices.size() > 0) {
+            mBTPairedDevices.clear();
+            for (BluetoothDevice device : pairedDevices) {
+                mBTPairedDevices.add(device);
+                mPairedDeviceListAdapter.notifyDataSetChanged();
+            }
+            ((TextView) findViewById(R.id.tvNoPairedDevices)).setVisibility(View.GONE);
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -160,7 +177,8 @@ public class BluetoothActivity extends AppCompatActivity {
             mBluetoothAdapter.cancelDiscovery();
         }
         // Don't forget to unregister the broadcast listener.
-        unregisterReceiver(mBroadcastReceiver);
+        if (mBroadcastReceiver != null)
+            unregisterReceiver(mBroadcastReceiver);
     }
 
     // Create a BroadcastReceiver for ACTION_FOUND.
