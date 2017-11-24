@@ -14,7 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_weight="0.3"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/pairedTextView"
@@ -41,7 +41,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.7"
             android:paddingTop="10dp">
 
             <TextView
@@ -89,5 +89,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="Scan"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/buttonSkip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="Skip"
         android:textSize="20sp"/>
 </RelativeLayout>
