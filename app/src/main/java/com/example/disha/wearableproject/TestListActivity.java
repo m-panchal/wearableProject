@@ -34,7 +34,7 @@ public class TestListActivity extends AppCompatActivity {
             // The code in this method will be executed when the numbers View is clicked on.
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TestListActivity.this, BradykinesiaActivity.class));
+                //startActivity(new Intent(TestListActivity.this, BradykinesiaActivity.class));
             }
         });
 
@@ -46,7 +46,7 @@ public class TestListActivity extends AppCompatActivity {
             // The code in this method will be executed when the numbers View is clicked on.
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TestListActivity.this, BalanceActivity.class));
+                //startActivity(new Intent(TestListActivity.this, BalanceActivity.class));
             }
         });
 
@@ -58,7 +58,7 @@ public class TestListActivity extends AppCompatActivity {
             // The code in this method will be executed when the numbers View is clicked on.
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TestListActivity.this, GaitActivity.class));
+                //startActivity(new Intent(TestListActivity.this, GaitActivity.class));
             }
         });
 
@@ -70,7 +70,7 @@ public class TestListActivity extends AppCompatActivity {
             // The code in this method will be executed when the numbers View is clicked on.
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TestListActivity.this, CognitiveActivity.class));
+                //startActivity(new Intent(TestListActivity.this, CognitiveActivity.class));
             }
         });
     }
