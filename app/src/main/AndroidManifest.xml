@@ -34,7 +34,8 @@
         <!-- Entry for BluetoothActivity.class -->
         <activity
             android:name=".BluetoothActivity"
-            android:label="Bluetooth devices"/>
+            android:label="Bluetooth devices" />
+        <activity android:name=".TestListActivity"></activity>
     </application>
 
 </manifest>

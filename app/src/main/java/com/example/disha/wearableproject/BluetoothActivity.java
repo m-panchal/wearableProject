@@ -177,8 +177,10 @@ public class BluetoothActivity extends AppCompatActivity {
             mBluetoothAdapter.cancelDiscovery();
         }
         // Don't forget to unregister the broadcast listener.
-        if (mBroadcastReceiver != null)
+        try {
             unregisterReceiver(mBroadcastReceiver);
+        } catch (IllegalArgumentException e) {
+        }
     }
 
     // Create a BroadcastReceiver for ACTION_FOUND.

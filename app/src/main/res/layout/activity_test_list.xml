@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvTremor"
+        style="@style/CategoryStyle"
+        android:text="Tremor"
+        android:onClick="openTremorList"
+        android:background="#ebe7e0"/>
+
+    <TextView
+        android:id="@+id/tvBradykinesia"
+        style="@style/CategoryStyle"
+        android:text="Bradykinesia"
+        android:onClick="openBradykinesiaList" />
+
+    <TextView
+        android:id="@+id/tvBalance"
+        style="@style/CategoryStyle"
+        android:text="Balance"
+        android:onClick="openBalanceList"
+        android:background="#ebe7e0"/>
+
+    <TextView
+        android:id="@+id/tvGait"
+        style="@style/CategoryStyle"
+        android:text="Gait"
+        android:onClick="openGaitList" />
+
+    <TextView
+        android:id="@+id/tvCognitive"
+        style="@style/CategoryStyle"
+        android:text="Cognitive"
+        android:onClick="openCognitiveList" />
+
+</LinearLayout>
