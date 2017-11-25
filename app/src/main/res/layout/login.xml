@@ -42,7 +42,8 @@ android:fillViewport="true">
         <TextView android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
-            android:text="Email"/>
+            android:text="Email"
+            android:textSize="18dp"/>
 
         <EditText
             android:id="@+id/edtEmail"
@@ -54,13 +55,15 @@ android:fillViewport="true">
             android:cursorVisible="true"
             android:singleLine="true"
             android:textColor="@android:color/white"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:textSize="20dp"/>
         <!--  Password Label -->
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Password"
             android:textColor="#ffffff"
+            android:textSize="18dp"
             android:textColorLink="@android:color/white" />
 
         <EditText
@@ -73,6 +76,7 @@ android:fillViewport="true">
             android:cursorVisible="true"
             android:password="true"
             android:singleLine="true"
+            android:textSize="20dp"
             android:textColor="@android:color/white"
             android:inputType="text"/>
         <!-- Login button -->

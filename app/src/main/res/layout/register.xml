@@ -14,7 +14,8 @@
             android:layout_height="wrap_content"
             android:background="#800020"
             android:paddingTop="5dip"
-            android:paddingBottom="40dip">
+            android:paddingBottom="40dip"
+            android:orientation="horizontal">
 
         </LinearLayout>
         <!--  Header Ends -->
@@ -23,7 +24,8 @@
             android:layout_width="fill_parent"
             android:layout_height="90dip"
             android:background="#800020"
-            android:layout_alignParentBottom="true">
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
         </LinearLayout>
         <!-- Footer Ends -->
 
@@ -41,6 +43,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="User Name"
+                android:textSize="18dp"
                 android:textColor="#ffffff" />
 
             <EditText
@@ -52,6 +55,8 @@
                 android:backgroundTint="@android:color/white"
                 android:singleLine="true"
                 android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
                 android:textColorLink="@android:color/white"
                 android:inputType="text"/>
 
@@ -59,6 +64,7 @@
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#ffffff"
+                android:textSize="18dp"
                 android:text="Phone Number"/>
 
             <EditText
@@ -68,15 +74,19 @@
                 android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
                 android:backgroundTint="@android:color/white"
-                android:singleLine="true"
+                android:textSize="20dp"
+                android:textColor="@android:color/white"
                 android:textColorLink="@android:color/white"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:maxLines="1" />
+
 
 
             <!--  Email Label -->
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#ffffff"
+                android:textSize="18dp"
                 android:text="Email"/>
 
             <EditText
@@ -86,15 +96,18 @@
                 android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
                 android:backgroundTint="@android:color/white"
-                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
                 android:textColorLink="@android:color/white"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:maxLines="1" />
 
 
             <!-- Password Label -->
             <TextView android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#ffffff"
+                android:textSize="18dp"
                 android:text="Password"/>
 
             <EditText
@@ -104,10 +117,12 @@
                 android:layout_marginBottom="20dip"
                 android:layout_marginTop="5dip"
                 android:backgroundTint="@android:color/white"
+                android:textSize="20dp"
                 android:password="true"
-                android:singleLine="true"
+                android:textColor="@android:color/white"
                 android:textColorLink="@android:color/white"
-                android:inputType="text"/>
+                android:inputType="text"
+                android:maxLines="1" />
             <!-- Register Button -->
             <Button android:id="@+id/btnRegister"
                 android:layout_width="fill_parent"
