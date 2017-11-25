@@ -1,10 +1,18 @@
 package com.example.disha.wearableproject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.disha.wearableproject.helper.DatabaseHistoryHandler;
 
 
 /**
@@ -13,12 +21,48 @@ import android.widget.TextView;
 
 
 public class RegisterActivity extends Activity {
+    private EditText uName;
+    private EditText uPhone;
+    private EditText uEmail;
+    private EditText uPassword;
+
+    String name, phone, email, password;
+    private Button btnRegister;
+    private ProgressDialog logDialog;
+    private DatabaseHistoryHandler db;
+    private static final String TAG = "MyActivity";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Set View to register.xml
         setContentView(R.layout.register);
+
+        uName = (EditText) findViewById(R.id.reg_fullname);
+        uPhone = (EditText) findViewById(R.id.reg_phone);
+        uEmail = (EditText) findViewById(R.id.reg_email);
+        uPassword = (EditText) findViewById(R.id.reg_password);
+
+        btnRegister = (Button) findViewById(R.id.btnRegister);
+        logDialog = new ProgressDialog(RegisterActivity.this);
+        logDialog.setCancelable(false);
+        db = new DatabaseHistoryHandler(getApplicationContext());
+
+        btnRegister.setOnClickListener(new Button.OnClickListener() { //Callback method for onclick
+            public void onClick(View v) {
+                name = uName.getText().toString().trim();
+                phone = uPhone.getText().toString().trim();
+                email = uEmail.getText().toString().trim();
+                password = uPassword.getText().toString().trim();
+
+                if ((!name.equals("")) && (!phone.equals("")) && (!email.equals("")) && (!password.equals("")) ) {
+                    new userRegister().execute();
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Enter all the details", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         TextView loginScreen = (TextView) findViewById(R.id.link_to_login);
 
@@ -33,6 +77,46 @@ public class RegisterActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    /*Async Task to Send data to server.*/
+    private class userRegister extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            logDialog = new ProgressDialog(RegisterActivity.this);
+            //nDialog.setTitle("Checking Network");
+            logDialog.setMessage("Submitting..");
+            logDialog.setIndeterminate(false);
+            logDialog.setCancelable(false);
+            logDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+
+            final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Creating Account...");
+            progressDialog.show();
+
+            db.registerUser(name, phone, email,password);
+            Log.i(TAG, "Registered User.");
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            if (logDialog.isShowing())
+                logDialog.dismiss();
+            Log.i(TAG, "Launching Login activity.");
+            Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(i);
+            finish();
+        }
     }
 }
 

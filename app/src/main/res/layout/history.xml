@@ -29,315 +29,327 @@
             android:orientation="vertical"
             android:padding="10dip">
 
-            <!--  Name Label -->
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                android:weightSum="2">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Name"
-                    android:textColor="#ffffff" />
-
-                <EditText
-                    android:id="@+id/edtName"
-                    android:layout_width="250dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dip"
                     android:layout_marginLeft="5.0dp"
-                    android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
-                    android:background="#FFDCDCDC"
-                    android:cursorVisible="true"
-                    android:inputType="text"
-                    android:singleLine="true"
-                    android:textColor="@android:color/black"
-                    android:layout_weight="0.06" />
+                    android:layout_weight="1"
+                    android:text="Age"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_weight="1"
+                    android:text="Gender"
+                    android:textColor="#ffffff"
+                    android:textSize="18dp" />
             </LinearLayout>
 
 
-            <!--  Age & Gender Label -->
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="14.0dp"
-                    android:text="Age"
-                    android:textColor="#ffffff"
-                    android:textColorLink="@android:color/white" />
+                <View
+                    android:id="@+id/fakeView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true" />
 
                 <EditText
                     android:id="@+id/edtAge"
-                    android:layout_width="40dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignRight="@id/fakeView"
                     android:layout_marginBottom="5dip"
                     android:layout_marginLeft="5.0dp"
                     android:layout_marginRight="5.0dp"
-                    android:layout_marginTop="5dip"
                     android:background="#FFDCDCDC"
                     android:cursorVisible="true"
                     android:inputType="number"
-                    android:textColor="@android:color/black"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gender"
-                    android:textColor="#ffffff" />
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
 
                 <EditText
                     android:id="@+id/edtGender"
-                    android:layout_width="75dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/fakeView"
+                    android:layout_alignParentRight="true"
                     android:layout_marginBottom="5dip"
                     android:layout_marginLeft="5.0dp"
                     android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
                     android:background="#FFDCDCDC"
                     android:cursorVisible="true"
                     android:inputType="text"
-                    android:textColor="@android:color/black"/>
-            </LinearLayout>
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+            </RelativeLayout>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginTop="10dip"
                     android:text="Race"
-                    android:textColor="#ffffff" />
-
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
                 <EditText
                     android:id="@+id/edtRace"
-                    android:layout_width="150dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="12.0dp"
+                    android:layout_marginLeft="5.0dp"
                     android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
                     android:background="#FFDCDCDC"
+                    android:textSize="20dp"
                     android:cursorVisible="true"
                     android:inputType="text"
-                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="Height (ft)"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:text="Weight (lb)"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/fakeView1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true" />
+
+                <EditText
+                    android:id="@+id/edtHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@id/fakeView1"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="5.0dp"
+                    android:background="#FFDCDCDC"
+                    android:cursorVisible="true"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+
+                <EditText
+                    android:id="@+id/edtWeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:background="#FFDCDCDC"
+                    android:layout_alignLeft="@id/fakeView1"
+                    android:layout_alignParentRight="true"
+                    android:cursorVisible="true"
+                    android:inputType="number"
+                    android:textColor="@android:color/black"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginTop="10dip"
+                    android:text="Status"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/edtStatus"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:background="#FFDCDCDC"
+                    android:textSize="20dp"
+                    android:cursorVisible="true"
+                    android:inputType="text"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginTop="10dip"
+                    android:text="Education"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
+
+                <EditText
+                    android:id="@+id/edtEducation"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="1.0dp"
+                    android:background="#FFDCDCDC"
+                    android:textSize="20dp"
+                    android:cursorVisible="true"
+                    android:inputType="text"
                     android:textColor="@android:color/black"/>
             </LinearLayout>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Height"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff"
-                    android:textColorLink="@android:color/white"/>
-                <EditText
-                    android:id="@+id/edtHeight"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dip"
                     android:layout_marginLeft="5.0dp"
-                    android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
-                    android:background="#FFDCDCDC"
-                    android:cursorVisible="true"
-                    android:inputType="number"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="1.0dp"
-                    android:layout_marginRight="1.0dp"
-                    android:layout_gravity="center"
-                    android:text="ft"
-                    android:textColor="#ffffff"
-                    android:textColorLink="@android:color/white" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Weight"
-                    android:textColor="#ffffff"
-                    android:layout_marginLeft="10dp"
-                    android:layout_gravity="center"
-                    android:textColorLink="@android:color/white"/>
-                <EditText
-                    android:id="@+id/edtWeight"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="5.0dp"
-                    android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
-                    android:background="#FFDCDCDC"
-                    android:cursorVisible="true"
-                    android:inputType="number"
-                    android:textColor="@android:color/black" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="1.0dp"
-                    android:layout_marginRight="1.0dp"
-                    android:layout_gravity="center"
-                    android:text="lb"
-                    android:textColor="#ffffff"
-                    android:textColorLink="@android:color/white"/>
-            </LinearLayout>
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Status"
-                    android:textColor="#ffffff"
-                    android:layout_gravity="center"/>
-                <EditText
-                    android:id="@+id/edtStatus"
-                    android:layout_width="125dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="5.0dp"
-                    android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
-                    android:background="#FFDCDCDC"
-                    android:cursorVisible="true"
-                    android:inputType="text"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Education"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff"/>
-                <EditText
-                    android:id="@+id/edtEducation"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="8.0dp"
-                    android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
-                    android:background="#FFDCDCDC"
-                    android:cursorVisible="true"
-                    android:inputType="text"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
                     android:text="General Health"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff" />
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
+
                 <EditText
                     android:id="@+id/edtHealth"
-                    android:layout_width="200dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="8.0dp"
+                    android:layout_marginLeft="5.0dp"
                     android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
                     android:background="#FFDCDCDC"
-                    android:cursorVisible="true"
+                    android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:lines="3"
-                    android:gravity="top|left"
                     android:scrollHorizontally="false"
                     android:scrollbars="vertical"
-                    android:textColor="@android:color/black" />
+                    android:textSize="20dp"
+                    android:cursorVisible="true"
+                    android:textColor="@android:color/black"/>
             </LinearLayout>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Any Diagonised&#10;Disease?"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff" />
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginTop="10dip"
+                    android:text="Any Diagonised Disease?"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
+
                 <EditText
                     android:id="@+id/edtDiagDisease"
-                    android:layout_width="200dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="8.0dp"
+                    android:layout_marginLeft="5.0dp"
                     android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
                     android:background="#FFDCDCDC"
                     android:cursorVisible="true"
+                    android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:lines="3"
-                    android:gravity="top|left"
                     android:scrollHorizontally="false"
                     android:scrollbars="vertical"
+                    android:textSize="20dp"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginTop="10dip"
                     android:text="Any Medication?"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff" />
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
+
                 <EditText
                     android:id="@+id/edtMedication"
-                    android:layout_width="200dp"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="1.0dp"
+                    android:layout_marginLeft="5.0dp"
                     android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
                     android:background="#FFDCDCDC"
                     android:cursorVisible="true"
+                    android:gravity="top|left"
                     android:inputType="textMultiLine"
                     android:lines="2"
-                    android:gravity="top|left"
                     android:scrollHorizontally="false"
                     android:scrollbars="vertical"
+                    android:textSize="20dp"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
@@ -346,12 +358,16 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Do you drink&#10;Alcohol?"
-                    android:layout_gravity="center"
-                    android:textColor="#ffffff" />
+                    android:text="Do you drink Alcohol?"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginTop="10dip"
+                    android:textColor="#ffffff"
+                    android:textColorLink="@android:color/white"
+                    android:textSize="18dp"/>
 
                 <EditText
                     android:id="@+id/edtAlcoholUse"
@@ -368,17 +384,25 @@
                     android:textCursorDrawable="@color/colorPrimaryDark" />
             </LinearLayout>
 
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
 
-            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+                <View
+                    android:id="@+id/fakeView2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_centerInParent="true" />
 
                 <Button
                     android:id="@+id/btnSkip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignRight="@id/fakeView2"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="5.0dp"
                     android:layout_marginTop="10dip"
                     android:text="Skip"
                     android:textSize="20dip" />
@@ -387,12 +411,16 @@
                     android:id="@+id/btnSubmit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignLeft="@id/fakeView2"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="5dip"
+                    android:layout_marginLeft="5.0dp"
+                    android:layout_marginRight="5.0dp"
                     android:layout_marginTop="10dip"
                     android:text="Submit History"
                     android:textSize="20dip" />
 
-            </LinearLayout>
-
+            </RelativeLayout>
 
 
         </LinearLayout>
