@@ -35,6 +35,7 @@
         android:id="@+id/tvCognitive"
         style="@style/CategoryStyle"
         android:text="Cognitive"
-        android:onClick="openCognitiveList" />
+        android:onClick="openCognitiveList"
+        android:background="#ebe7e0"/>
 
 </LinearLayout>
