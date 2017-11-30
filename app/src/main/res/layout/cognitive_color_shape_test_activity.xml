@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/topColorBox"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/blue"
+            android:layout_marginLeft="2dp"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/red"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/green"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/yellow"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/orange"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/purple"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/topColorBox">
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/triangle"
+            android:layout_marginLeft="2dp"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/right_arrow"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/circle"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/diamond"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/pentagon"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:src="@drawable/star"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/star"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivBlue"
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:clickable="false"
+            android:onClick="blue"
+            android:src="@drawable/blue"
+            android:layout_marginLeft="2dp"/>
+
+        <ImageView
+            android:id="@+id/ivRed"
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:clickable="false"
+            android:onClick="red"
+            android:src="@drawable/red"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:id="@+id/ivGreen"
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:clickable="false"
+            android:onClick="green"
+            android:src="@drawable/green"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:id="@+id/ivYellow"
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:clickable="false"
+            android:onClick="yellow"
+            android:src="@drawable/yellow"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:id="@+id/ivOrange"
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:clickable="false"
+            android:onClick="orange"
+            android:src="@drawable/orange"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+        <ImageView
+            android:id="@+id/ivPurple"
+            android:layout_width="@dimen/color_box_size"
+            android:layout_height="@dimen/color_box_size"
+            android:clickable="false"
+            android:onClick="purple"
+            android:src="@drawable/purple"
+            android:layout_marginLeft="@dimen/left_margin"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

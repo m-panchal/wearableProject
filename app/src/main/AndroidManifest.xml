@@ -40,7 +40,8 @@
             android:name=".TremorActivity"
             android:label="@string/title_activity_tremor"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TremorRestActivity"></activity>
+        <activity android:name=".TremorRestActivity" />
+        <activity android:name=".CognitiveActivity" />
     </application>
 
 </manifest>
