@@ -1,13 +1,18 @@
 package com.example.disha.wearableproject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.disha.wearableproject.helper.DatabaseHistoryHandler;
 
 
 /**
@@ -16,10 +21,17 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity{
 
+    private EditText uEmail;
+    private EditText uPassword;
+    private Button btnLogin;
 
-    final String[] email = new String[1];
-    final String[] password = new String[1];
-    EditText uEmail,uPassword;
+    String email, password;
+
+    boolean userValid;
+    private ProgressDialog logDialog;
+    private DatabaseHistoryHandler db;
+    private static final String TAG = "MyActivity";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,20 +40,26 @@ public class LoginActivity extends Activity{
 
         uEmail =(EditText) findViewById(R.id.edtEmail);
         uPassword = (EditText) findViewById(R.id.edtPwd);
-        final Button Login = (Button) findViewById(R.id.btnLogin);
-        Login.setOnClickListener(new Button.OnClickListener() { //Callback method for onclick
-            public void onClick(View v) {
-              email[0] = uEmail.getText().toString().trim();
-                password[0] = uPassword.getText().toString().trim();
 
-                if ((!email[0].equals("")) && (!password[0].equals(""))) {
-                            Intent i = new Intent(getApplicationContext(), HistoryActivity.class);
-                            startActivity(i);
-                            finish();
-                } else if ((!email[0].equals(""))) {
+        db = new DatabaseHistoryHandler(getApplicationContext());
+        logDialog = new ProgressDialog(LoginActivity.this);
+        logDialog.setCancelable(false);
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+
+        btnLogin.setOnClickListener(new Button.OnClickListener() { //Callback method for onclick
+            public void onClick(View v) {
+                email = uEmail.getText().toString().trim();
+                password = uPassword.getText().toString().trim();
+
+                Log.d(TAG,"-email:" +email);
+                Log.d(TAG,"-password:"+password);
+
+                if ((!email.equals("")) && (!password.equals(""))) {
+                    new userLogin().execute();
+                } else if ((!email.equals(""))) {
                     Toast.makeText(getApplicationContext(),
                             "Enter Password", Toast.LENGTH_SHORT).show();
-                } else if ((!password[0].equals(""))) {
+                } else if ((!password.equals(""))) {
                     Toast.makeText(getApplicationContext(),
                             "Enter Email", Toast.LENGTH_SHORT).show();
                 } else {
@@ -63,5 +81,46 @@ public class LoginActivity extends Activity{
                 finish();
             }
         });
+    }
+
+    /*Async Task to Send data to server.*/
+    private class userLogin extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            logDialog = new ProgressDialog(LoginActivity.this);
+            //nDialog.setTitle("Checking Network");
+            logDialog.setMessage("Logging in...");
+            logDialog.setIndeterminate(false);
+            logDialog.setCancelable(false);
+            logDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            userValid = db.checkUserLogin(email,password);
+            Log.d(TAG, "-User Login check:" + userValid);
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            if (logDialog.isShowing())
+                logDialog.dismiss();
+
+            if(!userValid ){
+                Toast.makeText(getApplicationContext(),
+                        "Login Failed!", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Log.i(TAG, "Launching History activity.");
+                Intent i = new Intent(LoginActivity.this, HistoryActivity.class);
+                startActivity(i);
+                finish();
+            }
+        }
     }
 }

@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.disha.wearableproject.helper.DatabaseHistoryHandler;
@@ -30,7 +32,8 @@ public class HistoryActivity extends Activity{
     private EditText uHealth;
     private EditText udiagonisedDisease;
     private EditText uMedication;
-    private EditText uAlcoholUse;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
     String  age, gender, race, height, weight,
             status, education, health, diagonisedDisease, medication, alcoholUse;
 
@@ -55,7 +58,8 @@ public class HistoryActivity extends Activity{
         uHealth = (EditText) findViewById(R.id.edtHealth);
         udiagonisedDisease = (EditText) findViewById(R.id.edtDiagDisease);
         uMedication = (EditText) findViewById(R.id.edtMedication);
-        uAlcoholUse = (EditText) findViewById(R.id.edtAlcoholUse);
+
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
         btnSubmitHistory = (Button) findViewById(R.id.btnSubmit);
         logDialog = new ProgressDialog(HistoryActivity.this);
@@ -76,12 +80,15 @@ public class HistoryActivity extends Activity{
                 health = uHealth.getText().toString().trim();
                 diagonisedDisease = udiagonisedDisease.getText().toString().trim();
                 medication = uMedication.getText().toString().trim();
-                alcoholUse = uAlcoholUse.getText().toString().trim();
+
+                int selectedId=radioGroup.getCheckedRadioButtonId();
+                radioButton=(RadioButton)findViewById(selectedId);
+                alcoholUse = radioButton.getText().toString().trim();
+
 
                 if ((!age.equals("")) && (!gender.equals("")) && (!race.equals(""))
                         && (!height.equals("")) && (!weight.equals("")) && (!status.equals("")) && (!education.equals(""))
                         && (!health.equals("")) && (!diagonisedDisease.equals("")) && (!medication.equals("")) && (!alcoholUse.equals(""))) {
-
                     new addHistory().execute();
                 } else {
                     Toast.makeText(getApplicationContext(),
@@ -118,8 +125,7 @@ public class HistoryActivity extends Activity{
         protected Void doInBackground(Void... params) {
             db.addUserHistory(age, gender, race, height, weight,
                     status, education, health, diagonisedDisease, medication, alcoholUse);
-            Log.i(TAG, "Added User History.");
-
+            Log.i(TAG, "-Added User History.");
             return null;
         }
 
@@ -129,7 +135,7 @@ public class HistoryActivity extends Activity{
             super.onPostExecute(result);
             if (logDialog.isShowing())
                 logDialog.dismiss();
-            Log.i(TAG, "Launching Blurtooth activity.");
+            Log.i(TAG, "Launching Bluetooth activity.");
             Intent i = new Intent(HistoryActivity.this, BluetoothActivity.class);
             startActivity(i);
             finish();

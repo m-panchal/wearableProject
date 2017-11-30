@@ -27,6 +27,7 @@ public class RegisterActivity extends Activity {
     private EditText uPassword;
 
     String name, phone, email, password;
+    boolean userExists;
     private Button btnRegister;
     private ProgressDialog logDialog;
     private DatabaseHistoryHandler db;
@@ -87,7 +88,7 @@ public class RegisterActivity extends Activity {
             super.onPreExecute();
             logDialog = new ProgressDialog(RegisterActivity.this);
             //nDialog.setTitle("Checking Network");
-            logDialog.setMessage("Submitting..");
+            logDialog.setMessage("Creating Account..");
             logDialog.setIndeterminate(false);
             logDialog.setCancelable(false);
             logDialog.show();
@@ -95,14 +96,16 @@ public class RegisterActivity extends Activity {
 
         @Override
         protected Void doInBackground(Void... params) {
+            userExists = db.checkUser(email);
 
-            final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Creating Account...");
-            progressDialog.show();
+            Log.d(TAG, "-User Exists check:" + userExists);
 
-            db.registerUser(name, phone, email,password);
-            Log.i(TAG, "Registered User.");
+            if (!userExists) {
+                db.registerUser(name, phone, email, password);
+               // Toast.makeText(getApplicationContext(),
+                 //       "Successfully Registered User.", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "-Registered User.");
+            }
             return null;
         }
 
@@ -112,10 +115,17 @@ public class RegisterActivity extends Activity {
             super.onPostExecute(result);
             if (logDialog.isShowing())
                 logDialog.dismiss();
-            Log.i(TAG, "Launching Login activity.");
-            Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(i);
-            finish();
+
+            if(userExists ){
+                Toast.makeText(getApplicationContext(),
+                        "User Already Exists.Registration failed", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Log.i(TAG, "Launching Login activity.");
+                Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(i);
+                finish();
+            }
         }
     }
 }

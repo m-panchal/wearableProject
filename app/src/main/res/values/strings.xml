@@ -3,5 +3,7 @@
     <string name="title_activity_tremor">TremorActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>

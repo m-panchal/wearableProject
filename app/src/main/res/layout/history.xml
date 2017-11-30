@@ -369,19 +369,30 @@
                     android:textColorLink="@android:color/white"
                     android:textSize="18dp"/>
 
-                <EditText
-                    android:id="@+id/edtAlcoholUse"
-                    android:layout_width="75dp"
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:layout_marginLeft="25.0dp"
-                    android:layout_marginRight="1.0dp"
-                    android:layout_marginTop="5dip"
-                    android:background="#FFDCDCDC"
-                    android:cursorVisible="true"
-                    android:inputType="text"
-                    android:textColor="@android:color/black"
-                    android:textCursorDrawable="@color/colorPrimaryDark" />
+                    android:id="@+id/radioGroup"
+                    android:orientation="horizontal">
+                    <RadioButton android:id="@+id/radio_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/yes"
+                        android:layout_marginLeft="5.0dp"
+                        android:layout_marginTop="5dip"
+                        android:textColor="#ffffff"
+                        android:buttonTint="@android:color/white"
+                        android:textSize="20dp"/>
+                    <RadioButton android:id="@+id/radio_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/no"
+                        android:layout_marginLeft="5.0dp"
+                        android:layout_marginTop="5dip"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:buttonTint="@android:color/white"/>
+                </RadioGroup>
             </LinearLayout>
 
             <RelativeLayout

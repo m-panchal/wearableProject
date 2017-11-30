@@ -2,6 +2,7 @@ package com.example.disha.wearableproject.helper;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class DatabaseHistoryHandler extends SQLiteOpenHelper {
     private static final String KEY_PASSWORD = "password";
 
     // Register Table Columns names
+    private static final String KEY_ID = "id";
     private static final String KEY_USERNAME = "name";
     private static final String KEY_PHONE = "phone";
     private static final String KEY_EMAILID = "email";
@@ -57,12 +59,12 @@ public class DatabaseHistoryHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String CREATE_LOGIN_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_USER + "("
+        String CREATE_LOGIN_TABLE = "CREATE TABLE " + TABLE_USER + "("
                 + KEY_EMAIL + " TEXT," + KEY_PASSWORD + " TEXT"
                 + ");";
         db.execSQL(CREATE_LOGIN_TABLE);
 
-        String CREATE_HISTORY_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_USER_HISTORY + "("
+        String CREATE_HISTORY_TABLE = "CREATE TABLE " + TABLE_USER_HISTORY + "("
                 + KEY_AGE + " TEXT,"
                 + KEY_GENDER + " TEXT," + KEY_RACE + " TEXT,"
                 + KEY_HEIGHT + " TEXT," + KEY_WEIGHT + " TEXT,"
@@ -71,8 +73,8 @@ public class DatabaseHistoryHandler extends SQLiteOpenHelper {
                 + KEY_MEDICATION + " TEXT," + KEY_ALCOHOL_USE + " TEXT" + ");";
         db.execSQL(CREATE_HISTORY_TABLE);
 
-        String CREATE_REGISTER_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_REGISTER + "("
-                + KEY_USERNAME + " TEXT," + KEY_PHONE + " TEXT," + KEY_EMAILID + " TEXT,"
+        String CREATE_REGISTER_TABLE = "CREATE TABLE " + TABLE_REGISTER + "("
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_USERNAME + " TEXT," + KEY_PHONE + " TEXT," + KEY_EMAILID + " TEXT,"
                 + KEY_PWD + " TEXT" + ");";
         db.execSQL(CREATE_REGISTER_TABLE);
 
@@ -123,7 +125,7 @@ public class DatabaseHistoryHandler extends SQLiteOpenHelper {
 
         // Inserting Row
         long ID = db.insert(TABLE_USER_HISTORY, null, values);
-        Log.d(TAG, "Inserted USER History: " + ID);
+        Log.d(TAG, "-Inserted USER History: " + ID);
         db.close(); // Closing database connection
     }
 
@@ -134,22 +136,71 @@ public class DatabaseHistoryHandler extends SQLiteOpenHelper {
         values.put(KEY_USERNAME, name);
         values.put(KEY_PHONE, phone);
         values.put(KEY_EMAILID, email);
-        values.put(KEY_PWD,password);
-
+        values.put(KEY_PWD, password);
         // Inserting Row
-        long ID = db.insert(TABLE_USER, null, values);
-        Log.d(TAG, "Registered New USER: " + ID);
+        long ID1 = db.insert(TABLE_REGISTER, null, values);
+        Log.d(TAG, "-Registered New USER: " + ID1);
         db.close(); // Closing database connection
     }
 
+    //check if user exists during registration
+    public boolean checkUser(String email) {
+        String[] columns = {     KEY_EMAILID   };
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = KEY_EMAILID + " = ?" ;// selection criteria
+        String[] selectionArgs = {email};// selection arguments
 
+        // query register table with conditions
+        Cursor cursor = db.query(TABLE_REGISTER, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+
+        Log.d(TAG,"-Cursorcount:" +cursorCount);
+        cursor.close();
+        db.close();
+        return cursorCount>0;
+    }
+
+    ////check if user exists during login
+    public boolean checkUserLogin(String email, String password) {
+        String[] columns = { KEY_EMAILID };
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = KEY_EMAILID + " = ?" + " AND " + KEY_PWD + " = ?";
+        String[] selectionArgs = {email, password};
+
+        Cursor cursor = db.query(TABLE_REGISTER, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+
+        cursor.close();
+        db.close();
+        return cursorCount > 0;
+    }
 
     // Deleting table details
-    public void deleteUser() {
+    public void deleteHistory() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USER_HISTORY, null, null);
         db.close();
         Log.d(TAG, "Deleted User details");
+    }
+    public void deleteRegister() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_REGISTER, null, null);
+        db.close();
+        Log.d(TAG, "Deleted Registered details");
     }
 
 }
