@@ -7,9 +7,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,13 +17,8 @@ import android.widget.TextView;
 
 import com.example.disha.wearableproject.helper.SensorDataDbHelper;
 
-import org.w3c.dom.Text;
-
 import static android.hardware.Sensor.TYPE_ACCELEROMETER;
 import static android.hardware.Sensor.TYPE_GYROSCOPE;
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
-import static com.example.disha.wearableproject.R.id.playButton;
-import static com.example.disha.wearableproject.R.id.textView;
 
 public class TremorRestActivity extends AppCompatActivity implements SensorEventListener{
 
@@ -42,6 +37,9 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
     private static float mGyroscopeX;
     private static float mGyroscopeY;
     private static float mGyroscopeZ;
+
+
+    private static final String TAG = "MyActivity";
 
     private SQLiteDatabase mDb;
     private SensorManager mSensorManager;
@@ -191,6 +189,14 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
 
     private long addNewSensorData(float accelerometerMagnitude, float accelerometerX, float accelerometerY, float accelerometerZ,float gyroscopeMagnitude, float gyroscopeX, float gyroscopeY, float gyroscopeZ){
 
+        Log.d(TAG, "-accelerometerMagnitude" +accelerometerMagnitude);
+        Log.d(TAG, "-accelerometerX" +accelerometerX);
+        Log.d(TAG, "-accelerometerY" +accelerometerY);
+        Log.d(TAG, "-accelerometerZ" +accelerometerZ);
+        Log.d(TAG, "-gyroscopeMagnitude" +gyroscopeMagnitude);
+        Log.d(TAG, "-GyroscopeX" +mGyroscopeX);
+        Log.d(TAG, "-GyroscopeY" +mGyroscopeY);
+        Log.d(TAG, "-GyroscopeZ" +mGyroscopeZ);
         ContentValues cv = new ContentValues();
         cv.put(SensorDataContract.SensorDataEntry.COLUMN_ACCELEROMETER,accelerometerMagnitude);
         cv.put(SensorDataContract.SensorDataEntry.COLUMN_ACCELEROMETER_X,accelerometerX);
