@@ -5,36 +5,85 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--  Header  Starts-->
+    <LinearLayout android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dip"
+        android:paddingBottom="50dip"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Test"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"/>
+
     <TextView
         android:id="@+id/tvTremor"
         style="@style/CategoryStyle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:gravity="center"
         android:text="Tremor"
         android:onClick="openTremorList"
+        android:textSize="25dp"
         android:background="#ebe7e0"/>
 
     <TextView
         android:id="@+id/tvBradykinesia"
         style="@style/CategoryStyle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:gravity="center"
         android:text="Bradykinesia"
+        android:textSize="25dp"
         android:onClick="openBradykinesiaList" />
 
     <TextView
         android:id="@+id/tvBalance"
         style="@style/CategoryStyle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:gravity="center"
         android:text="Balance"
         android:onClick="openBalanceList"
+        android:textSize="25dp"
         android:background="#ebe7e0"/>
 
     <TextView
         android:id="@+id/tvGait"
         style="@style/CategoryStyle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:gravity="center"
         android:text="Gait"
+        android:textSize="25dp"
         android:onClick="openGaitList" />
 
     <TextView
         android:id="@+id/tvCognitive"
         style="@style/CategoryStyle"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:gravity="center"
         android:text="Cognitive"
+        android:textSize="25dp"
         android:onClick="openCognitiveList"
         android:background="#ebe7e0"/>
 
