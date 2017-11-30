@@ -94,7 +94,7 @@ public class HistoryActivity extends Activity{
         Skip.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BluetoothActivity.class);
+                Intent intent = new Intent(getApplicationContext(), TestListActivity.class);
                 startActivity(intent);
             }
         });
