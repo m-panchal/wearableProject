@@ -5,9 +5,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <!--  Header  Starts-->
+    <LinearLayout android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dip"
+        android:paddingBottom="50dip"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tremor Assessment"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="40sp"/>
+
     <TextView
         android:id="@+id/tvRest"
         style="@style/CategoryStyleSub"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="25dp"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:text="Rest"
         android:onClick="openRest"
         android:background="#ebe7e0"/>
@@ -15,17 +39,35 @@
     <TextView
         android:id="@+id/tvPostural"
         style="@style/CategoryStyleSub"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="25dp"
         android:text="Postural" />
 
     <TextView
         android:id="@+id/tvIntention"
         style="@style/CategoryStyleSub"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="25dp"
         android:text="Intention"
         android:background="#ebe7e0"/>
 
     <TextView
         android:id="@+id/tvKinetic"
         style="@style/CategoryStyleSub"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="25dp"
         android:text="Kinetic" />
 
 </LinearLayout>

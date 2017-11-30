@@ -12,7 +12,6 @@
         android:paddingTop="5dip"
         android:paddingBottom="50dip"
         android:orientation="horizontal">
-
     </LinearLayout>
 
     <TextView
@@ -30,8 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
-        android:textColor="@android:color/black"
         android:gravity="center"
+        android:textColor="@android:color/black"
         android:text="Tremor"
         android:onClick="openTremorList"
         android:textSize="25dp"
