@@ -66,13 +66,13 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
                 thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        /*SensorDataDbHelper dbHelper = new SensorDataDbHelper(TremorRestActivity.this);
+                        SensorDataDbHelper dbHelper = new SensorDataDbHelper(TremorRestActivity.this);
                         mDb = dbHelper.getWritableDatabase();
                         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
                         mAccelSensor = mSensorManager.getDefaultSensor(TYPE_ACCELEROMETER);
                         mGyroSensor = mSensorManager.getDefaultSensor(TYPE_GYROSCOPE);
                         mSensorManager.registerListener(TremorRestActivity.this, mAccelSensor, 20);
-                        mSensorManager.registerListener(TremorRestActivity.this, mGyroSensor, 20);*/
+                        mSensorManager.registerListener(TremorRestActivity.this, mGyroSensor, 20);
                         Log.d("Thread", "Started");
                         runOnUiThread(new Runnable() {
                             @Override
@@ -81,6 +81,7 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
                                         .setTitle("In progress")
                                         .setMessage("Application is collecting data")
                                         .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .setCancelable(false)
                                         .show();
                             }
                         });
@@ -103,9 +104,9 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
                             count++;
                         }
                         alertDialog.dismiss();
-                        /*mSensorManager.unregisterListener(TremorRestActivity.this);
                         mSensorManager.unregisterListener(TremorRestActivity.this);
-                        mDb.close();*/
+                        mSensorManager.unregisterListener(TremorRestActivity.this);
+                        mDb.close();
                     }
                 });
                 thread.start();
@@ -117,10 +118,10 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
     public void onSensorChanged(SensorEvent event) {
         // If sensor is unreliable, then just return
         Log.d("onSensorChanged", "Received event " + String.valueOf(event.accuracy));
-        if (event.accuracy == SensorManager.SENSOR_STATUS_UNRELIABLE)
+        /*if (event.accuracy == SensorManager.SENSOR_STATUS_UNRELIABLE)
         {
             return;
-        }
+        }*/
         mMagnitude = (float)Math.sqrt((float)Math.pow(event.values[0],2)+(float)Math.pow(event.values[1],2)+(float)Math.pow(event.values[2],2));
 
         if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
