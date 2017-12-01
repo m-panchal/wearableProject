@@ -2,6 +2,7 @@ package com.example.disha.wearableproject;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -38,7 +39,6 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
     private static float mGyroscopeY;
     private static float mGyroscopeZ;
 
-
     private static final String TAG = "MyActivity";
 
     private SQLiteDatabase mDb;
@@ -53,8 +53,9 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tremor_rest);
 
-        counter = (TextView) findViewById(R.id.tvCounter);
-        playButton =(ImageButton)findViewById(R.id.playButton);
+        counter = (TextView) findViewById(R.id.ctrRest);
+        playButton =(ImageButton)findViewById(R.id.playbtnRest);
+
         countDownTimer = new CountDownTimer(20000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -69,6 +70,9 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
                     done.notify();
                 }
                 counter.setText("Done!");
+                //Intent i = new Intent(TremorRestActivity.this, TremorActivity.class);
+                //startActivity(i);
+               // finish();
                 //playButton.setVisibility(View.VISIBLE);
             }
         };
@@ -106,6 +110,10 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
                         counter.post(new Runnable() {
                             public void run() {
                                 counter.setText("Done!");
+                                Intent i = new Intent(TremorRestActivity.this, TremorActivity.class);
+                                startActivity(i);
+                                finish();
+
                             }
                         });
                         //counter.setText("Done!");
@@ -211,6 +219,4 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
         Log.d("addNewSensorData", "Added");
         return mDb.insert(SensorDataContract.SensorDataEntry.TABLE_NAME,null,cv);
     }
-
-
 }

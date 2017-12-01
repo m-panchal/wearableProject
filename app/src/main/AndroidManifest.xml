@@ -26,22 +26,31 @@
         <!-- Entry for RegisterActivity.class -->
         <activity
             android:name=".RegisterActivity"
-            android:label="Register New Account" />
+            android:label="Register New Account" ></activity>
         <!-- Entry for HistoryActivity.class -->
         <activity
             android:name=".HistoryActivity"
-            android:label="User History" />
+            android:label="User History" ></activity>
         <!-- Entry for BluetoothActivity.class -->
         <activity
             android:name=".BluetoothActivity"
-            android:label="Bluetooth devices" />
-        <activity android:name=".TestListActivity" />
+            android:label="Bluetooth devices" ></activity>
+        <activity android:name=".TestListActivity" ></activity>
         <activity
             android:name=".TremorActivity"
             android:label="@string/title_activity_tremor"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TremorRestActivity" />
-        <activity android:name=".CognitiveActivity" />
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
+
+        <activity android:name=".TremorRestActivity" ></activity>
+        <activity android:name=".TremorPosturalActivity" ></activity>
+        <activity android:name=".TremorIntentionActivity" ></activity>
+        <activity android:name=".TremorKineticActivity" ></activity>
+
+
+
+        <activity android:name=".CognitiveActivity" ></activity>
+
+
     </application>
 
 </manifest>
