@@ -1,19 +1,22 @@
 package com.example.disha.wearableproject;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.disha.wearableproject.helper.SensorDataDbHelper;
@@ -23,10 +26,10 @@ import static android.hardware.Sensor.TYPE_GYROSCOPE;
 
 public class TremorRestActivity extends AppCompatActivity implements SensorEventListener{
 
-    private static ImageButton playButton;
+    private static ImageView play;
     private static TextView counter;
-    private static CountDownTimer countDownTimer;
     private static Thread thread;
+    private static AlertDialog alertDialog;
     private float mMagnitude=0;
     private static int mAFlag=0;
     private static int mGFlag=0;
@@ -45,7 +48,6 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
     private SensorManager mSensorManager;
     private Sensor mAccelSensor;
     private Sensor mGyroSensor;
-    private Boolean done = false;
     private Integer count = 0;
 
     @Override
@@ -54,51 +56,44 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
         setContentView(R.layout.tremor_rest);
 
         counter = (TextView) findViewById(R.id.ctrRest);
-        playButton =(ImageButton)findViewById(R.id.playbtnRest);
+        play =(ImageView)findViewById(R.id.playbtnRest);
 
-        countDownTimer = new CountDownTimer(20000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                counter.setText(String.valueOf((20000-millisUntilFinished)/1000 + 1));
-            }
-
-            @Override
-            public void onFinish() {
-                //counter.setVisibility(View.GONE);
-                //thread.interrupt();
-                synchronized (done) {
-                    done.notify();
-                }
-                counter.setText("Done!");
-                //Intent i = new Intent(TremorRestActivity.this, TremorActivity.class);
-                //startActivity(i);
-               // finish();
-                //playButton.setVisibility(View.VISIBLE);
-            }
-        };
-
-        playButton.setOnClickListener(new View.OnClickListener() {
+        play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playButton.setVisibility(View.GONE);
+                play.setVisibility(View.GONE);
                 counter.setVisibility(View.VISIBLE);
-                //countDownTimer.start();
                 thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        SensorDataDbHelper dbHelper = new SensorDataDbHelper(TremorRestActivity.this);
+                        /*SensorDataDbHelper dbHelper = new SensorDataDbHelper(TremorRestActivity.this);
                         mDb = dbHelper.getWritableDatabase();
                         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
                         mAccelSensor = mSensorManager.getDefaultSensor(TYPE_ACCELEROMETER);
                         mGyroSensor = mSensorManager.getDefaultSensor(TYPE_GYROSCOPE);
                         mSensorManager.registerListener(TremorRestActivity.this, mAccelSensor, 20);
-                        mSensorManager.registerListener(TremorRestActivity.this, mGyroSensor, 20);
+                        mSensorManager.registerListener(TremorRestActivity.this, mGyroSensor, 20);*/
                         Log.d("Thread", "Started");
-                        counter.post(new Runnable() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                alertDialog = new AlertDialog.Builder(TremorRestActivity.this)
+                                        .setTitle("In progress")
+                                        .setMessage("Application is collecting data")
+                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .show();
+                            }
+                        });
+                        /**alertDialog = new AlertDialog.Builder(TremorRestActivity.this)
+                                .setTitle("In progress")
+                                .setMessage("Application is collecting data")
+                                .setIcon(android.R.drawable.ic_dialog_alert)
+                                .show();
+                        /*counter.post(new Runnable() {
                             public void run() {
                                 counter.setText("Collecting\n data...");
                             }
-                        });
+                        });*/
                         while (count < 20) {
                             try {
                                 Thread.sleep(1000);
@@ -107,27 +102,10 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
                             }
                             count++;
                         }
-                        counter.post(new Runnable() {
-                            public void run() {
-                                counter.setText("Done!");
-                                Intent i = new Intent(TremorRestActivity.this, TremorActivity.class);
-                                startActivity(i);
-                                finish();
-
-                            }
-                        });
-                        //counter.setText("Done!");
-                        /*synchronized (done) {
-                            try {
-                                done.wait();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }*/
-                        //while(!Thread.interrupted());
+                        alertDialog.dismiss();
+                        /*mSensorManager.unregisterListener(TremorRestActivity.this);
                         mSensorManager.unregisterListener(TremorRestActivity.this);
-                        mSensorManager.unregisterListener(TremorRestActivity.this);
-                        mDb.close();
+                        mDb.close();*/
                     }
                 });
                 thread.start();
@@ -139,10 +117,10 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
     public void onSensorChanged(SensorEvent event) {
         // If sensor is unreliable, then just return
         Log.d("onSensorChanged", "Received event " + String.valueOf(event.accuracy));
-        /*if (event.accuracy == SensorManager.SENSOR_STATUS_UNRELIABLE)
+        if (event.accuracy == SensorManager.SENSOR_STATUS_UNRELIABLE)
         {
             return;
-        }*/
+        }
         mMagnitude = (float)Math.sqrt((float)Math.pow(event.values[0],2)+(float)Math.pow(event.values[1],2)+(float)Math.pow(event.values[2],2));
 
         if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {

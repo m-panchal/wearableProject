@@ -9,11 +9,10 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.disha.wearableproject.helper.SensorDataDbHelper;
@@ -27,9 +26,8 @@ import static android.hardware.Sensor.TYPE_GYROSCOPE;
 
 public class TremorKineticActivity extends AppCompatActivity implements SensorEventListener {
 
-    private static ImageButton playButton;
+    private static ImageView play;
     private static TextView counter;
-    private static CountDownTimer countDownTimer;
     private static Thread thread;
     private float mMagnitude = 0;
     private static int mAFlag = 0;
@@ -49,7 +47,6 @@ public class TremorKineticActivity extends AppCompatActivity implements SensorEv
     private SensorManager mSensorManager;
     private Sensor mAccelSensor;
     private Sensor mGyroSensor;
-    private Boolean done = false;
     private Integer count = 0;
 
     @Override
@@ -58,35 +55,13 @@ public class TremorKineticActivity extends AppCompatActivity implements SensorEv
         setContentView(R.layout.tremor_kinetic);
 
         counter = (TextView) findViewById(R.id.ctrkinetic);
-        playButton = (ImageButton) findViewById(R.id.playbtnkinetic);
+        play = (ImageView) findViewById(R.id.playbtnkinetic);
 
-        countDownTimer = new CountDownTimer(15000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                counter.setText(String.valueOf((15000 - millisUntilFinished) / 1000 + 1));
-            }
-
-            @Override
-            public void onFinish() {
-                //counter.setVisibility(View.GONE);
-                //thread.interrupt();
-                synchronized (done) {
-                    done.notify();
-                }
-                counter.setText("Done!");
-                //Intent i = new Intent(TremorRestActivity.this, TremorActivity.class);
-                //startActivity(i);
-                // finish();
-                //playButton.setVisibility(View.VISIBLE);
-            }
-        };
-
-        playButton.setOnClickListener(new View.OnClickListener() {
+        play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playButton.setVisibility(View.GONE);
+                play.setVisibility(View.GONE);
                 counter.setVisibility(View.VISIBLE);
-                //countDownTimer.start();
                 thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -120,15 +95,6 @@ public class TremorKineticActivity extends AppCompatActivity implements SensorEv
 
                             }
                         });
-                        //counter.setText("Done!");
-                        /*synchronized (done) {
-                            try {
-                                done.wait();
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }*/
-                        //while(!Thread.interrupted());
                         mSensorManager.unregisterListener(TremorKineticActivity.this);
                         mSensorManager.unregisterListener(TremorKineticActivity.this);
                         mDb.close();
