@@ -25,6 +25,7 @@ public class SensorDataDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         final String SQL_CREATE_WAITLIST_TABLE = "CREATE TABLE " + SensorDataContract.SensorDataEntry.TABLE_NAME
                 + " ( " + SensorDataContract.SensorDataEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                SensorDataContract.SensorDataEntry.COLUMN_VALUE + " REAL NOT NULL, " +
                 SensorDataContract.SensorDataEntry.COLUMN_ACCELEROMETER + " REAL NOT NULL, " +
                 SensorDataContract.SensorDataEntry.COLUMN_ACCELEROMETER_X + " REAL NOT NULL, " +
                 SensorDataContract.SensorDataEntry.COLUMN_ACCELEROMETER_Y + " REAL NOT NULL, " +

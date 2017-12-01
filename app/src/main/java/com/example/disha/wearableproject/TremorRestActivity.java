@@ -198,6 +198,8 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
         Log.d(TAG, "-GyroscopeY" +mGyroscopeY);
         Log.d(TAG, "-GyroscopeZ" +mGyroscopeZ);
         ContentValues cv = new ContentValues();
+        String value = "Rest";
+        cv.put(SensorDataContract.SensorDataEntry.COLUMN_VALUE,value);
         cv.put(SensorDataContract.SensorDataEntry.COLUMN_ACCELEROMETER,accelerometerMagnitude);
         cv.put(SensorDataContract.SensorDataEntry.COLUMN_ACCELEROMETER_X,accelerometerX);
         cv.put(SensorDataContract.SensorDataEntry.COLUMN_ACCELEROMETER_Y,accelerometerY);
@@ -209,4 +211,6 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
         Log.d("addNewSensorData", "Added");
         return mDb.insert(SensorDataContract.SensorDataEntry.TABLE_NAME,null,cv);
     }
+
+
 }

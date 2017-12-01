@@ -9,7 +9,8 @@ import android.provider.BaseColumns;
 public class SensorDataContract {
     public static final class SensorDataEntry implements BaseColumns {
 
-        public static final String TABLE_NAME = "sensorData";
+        public static final String TABLE_NAME = "sensorTremorData";
+        public static final String COLUMN_VALUE="value";
         public static final String COLUMN_ACCELEROMETER="accelerometerMagnitude";
         public static final String COLUMN_ACCELEROMETER_X="accelerometerX";
         public static final String COLUMN_ACCELEROMETER_Y="accelerometerY";
