@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp">
+
+    <!--  Header  Starts-->
+    <LinearLayout android:id="@+id/header"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dip"
+        android:paddingBottom="5dip"
+        android:orientation="horizontal">
+    </LinearLayout>
+
+
+    <!--  Instruction-->
+    <TextView android:id="@+id/instr"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:paddingTop="5dip"
+        android:paddingBottom="5dip"
+        android:text="Instructions:"
+        android:textColor="@android:color/black"
+        android:textSize="30sp"
+        android:orientation="horizontal">
+    </TextView>
+
+    <!--  Instruction-->
+    <TextView android:id="@+id/instruct"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/instr"
+        android:paddingTop="15dip"
+        android:paddingBottom="10dip"
+        android:text="@string/intensionTremor"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:maxLines="15"
+        android:orientation="horizontal">
+    </TextView>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/instruct"
+        android:id="@+id/ctrIntension"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:textSize="50sp"
+        android:visibility="gone"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playbtnIntension"
+        android:src="@android:drawable/ic_media_play"
+        android:layout_below="@+id/instruct"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="128dp" />
+    <!--  -->
+
+
+</RelativeLayout>
