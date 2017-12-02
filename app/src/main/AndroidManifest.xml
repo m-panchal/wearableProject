@@ -45,7 +45,7 @@
         <activity android:name=".TremorIntentionActivity" />
         <activity android:name=".TremorKineticActivity" />
         <activity android:name=".CognitiveActivity" />
-        <activity android:name=".ColorShapeTestActivity" />
+        <activity android:name=".CognitiveColorShapeTestActivity" />
         <activity android:name=".BradykinesiaActivity" />
         <activity android:name=".BradykinesiaFingerTapActivity"></activity>
     </application>

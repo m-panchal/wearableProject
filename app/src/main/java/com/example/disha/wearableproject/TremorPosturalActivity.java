@@ -68,14 +68,6 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
                 thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        SensorDataDbHelper dbHelper = new SensorDataDbHelper(TremorPosturalActivity.this);
-                        mDb = dbHelper.getWritableDatabase();
-                        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-                        mAccelSensor = mSensorManager.getDefaultSensor(TYPE_ACCELEROMETER);
-                        mGyroSensor = mSensorManager.getDefaultSensor(TYPE_GYROSCOPE);
-                        mSensorManager.registerListener(TremorPosturalActivity.this, mAccelSensor, 20);
-                        mSensorManager.registerListener(TremorPosturalActivity.this, mGyroSensor, 20);
-                        Log.d("Thread", "Started");
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -87,6 +79,14 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
                                         .show();
                             }
                         });
+                        Log.d("Thread", "Started");
+                        SensorDataDbHelper dbHelper = new SensorDataDbHelper(TremorPosturalActivity.this);
+                        mDb = dbHelper.getWritableDatabase();
+                        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+                        mAccelSensor = mSensorManager.getDefaultSensor(TYPE_ACCELEROMETER);
+                        mGyroSensor = mSensorManager.getDefaultSensor(TYPE_GYROSCOPE);
+                        mSensorManager.registerListener(TremorPosturalActivity.this, mAccelSensor, 20);
+                        mSensorManager.registerListener(TremorPosturalActivity.this, mGyroSensor, 20);
                         while (count < 20) {
                             try {
                                 Thread.sleep(1000);
@@ -95,10 +95,11 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
                             }
                             count++;
                         }
-                        alertDialog.dismiss();
-                        mSensorManager.unregisterListener(TremorPosturalActivity.this);
                         mSensorManager.unregisterListener(TremorPosturalActivity.this);
                         mDb.close();
+                        setResult(RESULT_OK, null);
+                        alertDialog.dismiss();
+                        finish();
                     }
                 });
                 thread.start();
