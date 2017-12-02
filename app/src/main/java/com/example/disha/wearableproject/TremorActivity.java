@@ -1,6 +1,8 @@
 package com.example.disha.wearableproject;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -68,16 +70,28 @@ public class TremorActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REST_TREMOR && resultCode == RESULT_OK)
+        if(requestCode == REST_TREMOR && resultCode == RESULT_OK) {
             restCorrect.setImageResource(R.drawable.correct_mark);
+            ToneGenerator toneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+            toneGen.startTone(ToneGenerator.TONE_SUP_PIP, 1200);
+        }
 
-        if(requestCode == POSTURAL_TREMOR && resultCode == RESULT_OK)
+        if(requestCode == POSTURAL_TREMOR && resultCode == RESULT_OK) {
             posturalCorrect.setImageResource(R.drawable.correct_mark);
+            ToneGenerator toneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+            toneGen.startTone(ToneGenerator.TONE_SUP_PIP, 1200);
+        }
 
-        if(requestCode == INTENTION_TREMOR && resultCode == RESULT_OK)
+        if(requestCode == INTENTION_TREMOR && resultCode == RESULT_OK) {
             intentionCorrect.setImageResource(R.drawable.correct_mark);
+            ToneGenerator toneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+            toneGen.startTone(ToneGenerator.TONE_SUP_PIP, 1200);
+        }
 
-        if(requestCode == KINETIC_TREMOR && resultCode == RESULT_OK)
+        if(requestCode == KINETIC_TREMOR && resultCode == RESULT_OK) {
             kineticCorrect.setImageResource(R.drawable.correct_mark);
+            ToneGenerator toneGen = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+            toneGen.startTone(ToneGenerator.TONE_SUP_PIP, 1200);
+        }
     }
 }
