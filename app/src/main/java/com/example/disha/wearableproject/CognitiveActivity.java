@@ -18,6 +18,7 @@ public class CognitiveActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CognitiveActivity.this, CognitiveColorShapeTestActivity.class));
+                finish();
             }
         });
     }
