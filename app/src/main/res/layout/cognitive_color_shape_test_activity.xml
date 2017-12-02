@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:paddingTop="16dp"
-    android:paddingBottom="16dp">
+    android:paddingBottom="16dp"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -94,10 +95,10 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/star"/>
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/centerShape"
+        android:layout_centerInParent="true"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -109,8 +110,6 @@
             android:id="@+id/ivBlue"
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
-            android:clickable="false"
-            android:onClick="blue"
             android:src="@drawable/blue"
             android:layout_marginLeft="2dp"/>
 
@@ -118,8 +117,6 @@
             android:id="@+id/ivRed"
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
-            android:clickable="false"
-            android:onClick="red"
             android:src="@drawable/red"
             android:layout_marginLeft="@dimen/left_margin"/>
 
@@ -127,8 +124,6 @@
             android:id="@+id/ivGreen"
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
-            android:clickable="false"
-            android:onClick="green"
             android:src="@drawable/green"
             android:layout_marginLeft="@dimen/left_margin"/>
 
@@ -136,8 +131,6 @@
             android:id="@+id/ivYellow"
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
-            android:clickable="false"
-            android:onClick="yellow"
             android:src="@drawable/yellow"
             android:layout_marginLeft="@dimen/left_margin"/>
 
@@ -145,8 +138,6 @@
             android:id="@+id/ivOrange"
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
-            android:clickable="false"
-            android:onClick="orange"
             android:src="@drawable/orange"
             android:layout_marginLeft="@dimen/left_margin"/>
 
@@ -154,8 +145,6 @@
             android:id="@+id/ivPurple"
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
-            android:clickable="false"
-            android:onClick="purple"
             android:src="@drawable/purple"
             android:layout_marginLeft="@dimen/left_margin"/>
 
