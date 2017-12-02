@@ -80,21 +80,11 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
                                 alertDialog = new AlertDialog.Builder(TremorRestActivity.this)
                                         .setTitle("In progress")
                                         .setMessage("Application is collecting data")
-                                        .setIcon(android.R.drawable.ic_dialog_alert)
+                                        .setIcon(android.R.drawable.ic_dialog_info)
                                         .setCancelable(false)
                                         .show();
                             }
                         });
-                        /**alertDialog = new AlertDialog.Builder(TremorRestActivity.this)
-                                .setTitle("In progress")
-                                .setMessage("Application is collecting data")
-                                .setIcon(android.R.drawable.ic_dialog_alert)
-                                .show();
-                        /*counter.post(new Runnable() {
-                            public void run() {
-                                counter.setText("Collecting\n data...");
-                            }
-                        });*/
                         while (count < 20) {
                             try {
                                 Thread.sleep(1000);

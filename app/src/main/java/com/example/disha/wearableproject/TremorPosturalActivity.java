@@ -1,5 +1,6 @@
 package com.example.disha.wearableproject;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -30,6 +31,7 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
     private static ImageView play;
     private static TextView counter;
     private static Thread thread;
+    private static AlertDialog alertDialog;
     private float mMagnitude = 0;
     private static int mAFlag = 0;
     private static int mGFlag = 0;
@@ -74,9 +76,15 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
                         mSensorManager.registerListener(TremorPosturalActivity.this, mAccelSensor, 20);
                         mSensorManager.registerListener(TremorPosturalActivity.this, mGyroSensor, 20);
                         Log.d("Thread", "Started");
-                        counter.post(new Runnable() {
+                        runOnUiThread(new Runnable() {
+                            @Override
                             public void run() {
-                                counter.setText("Collecting\n data...");
+                                alertDialog = new AlertDialog.Builder(TremorPosturalActivity.this)
+                                        .setTitle("In progress")
+                                        .setMessage("Application is collecting data")
+                                        .setIcon(android.R.drawable.ic_dialog_info)
+                                        .setCancelable(false)
+                                        .show();
                             }
                         });
                         while (count < 20) {
@@ -87,15 +95,7 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
                             }
                             count++;
                         }
-                        counter.post(new Runnable() {
-                            public void run() {
-                                counter.setText("Done!");
-                                Intent i = new Intent(TremorPosturalActivity.this, TremorActivity.class);
-                                startActivity(i);
-                                finish();
-
-                            }
-                        });
+                        alertDialog.dismiss();
                         mSensorManager.unregisterListener(TremorPosturalActivity.this);
                         mSensorManager.unregisterListener(TremorPosturalActivity.this);
                         mDb.close();

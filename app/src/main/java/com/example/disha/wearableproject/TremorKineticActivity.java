@@ -1,5 +1,6 @@
 package com.example.disha.wearableproject;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,7 @@ public class TremorKineticActivity extends AppCompatActivity implements SensorEv
     private static ImageView play;
     private static TextView counter;
     private static Thread thread;
+    private static AlertDialog alertDialog;
     private float mMagnitude = 0;
     private static int mAFlag = 0;
     private static int mGFlag = 0;
@@ -73,9 +75,15 @@ public class TremorKineticActivity extends AppCompatActivity implements SensorEv
                         mSensorManager.registerListener(TremorKineticActivity.this, mAccelSensor, 20);
                         mSensorManager.registerListener(TremorKineticActivity.this, mGyroSensor, 20);
                         Log.d("Thread", "Started");
-                        counter.post(new Runnable() {
+                        runOnUiThread(new Runnable() {
+                            @Override
                             public void run() {
-                                counter.setText("Collecting\n data...");
+                                alertDialog = new AlertDialog.Builder(TremorKineticActivity.this)
+                                        .setTitle("In progress")
+                                        .setMessage("Application is collecting data")
+                                        .setIcon(android.R.drawable.ic_dialog_info)
+                                        .setCancelable(false)
+                                        .show();
                             }
                         });
                         while (count < 20) {
@@ -86,15 +94,7 @@ public class TremorKineticActivity extends AppCompatActivity implements SensorEv
                             }
                             count++;
                         }
-                        counter.post(new Runnable() {
-                            public void run() {
-                                counter.setText("Done!");
-                                Intent i = new Intent(TremorKineticActivity.this, TremorActivity.class);
-                                startActivity(i);
-                                finish();
-
-                            }
-                        });
+                        alertDialog.dismiss();
                         mSensorManager.unregisterListener(TremorKineticActivity.this);
                         mSensorManager.unregisterListener(TremorKineticActivity.this);
                         mDb.close();
