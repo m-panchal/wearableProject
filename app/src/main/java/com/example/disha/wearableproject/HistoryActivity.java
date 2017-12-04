@@ -82,7 +82,9 @@ public class HistoryActivity extends Activity{
 
                 int selectedId=radioGroup.getCheckedRadioButtonId();
                 radioButton=(RadioButton)findViewById(selectedId);
-                alcoholUse = radioButton.getText().toString().trim();
+                alcoholUse = "";
+                if (radioButton != null)
+                    alcoholUse = radioButton.getText().toString().trim();
 
 
                 if ((!age.equals("")) && (!gender.equals("")) && (!race.equals(""))
@@ -134,10 +136,9 @@ public class HistoryActivity extends Activity{
             super.onPostExecute(result);
             if (logDialog.isShowing())
                 logDialog.dismiss();
-            Log.i(TAG, "Launching Bluetooth activity.");
-            Intent i = new Intent(HistoryActivity.this, BluetoothActivity.class);
-            startActivity(i);
-            finish();
+            Log.i(TAG, "Launching TestList activity.");
+            Intent intent = new Intent(getApplicationContext(), TestListActivity.class);
+            startActivity(intent);
         }
     }
 }
