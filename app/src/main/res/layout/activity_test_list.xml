@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:text="Select Test"
         android:layout_gravity="center"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
         android:textSize="40sp"/>
 
@@ -30,11 +31,11 @@
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:text="Tremor"
         android:onClick="openTremorList"
         android:textSize="25dp"
-        android:background="#ebe7e0"/>
+        android:background="@color/colorMaroon"/>
 
     <TextView
         android:id="@+id/tvBradykinesia"
@@ -42,9 +43,10 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:gravity="center"
         android:text="Bradykinesia"
+        android:background="@color/colorWarmGrey"
         android:textSize="25dp"
         android:onClick="openBradykinesiaList" />
 
@@ -54,12 +56,12 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:gravity="center"
         android:text="Balance"
         android:onClick="openBalanceList"
         android:textSize="25dp"
-        android:background="#ebe7e0"/>
+        android:background="@color/colorMaroon"/>
 
     <TextView
         android:id="@+id/tvGait"
@@ -67,10 +69,11 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:gravity="center"
         android:text="Gait"
         android:textSize="25dp"
+        android:background="@color/colorWarmGrey"
         android:onClick="openGaitList" />
 
     <TextView
@@ -79,11 +82,11 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:gravity="center"
         android:text="Cognitive"
         android:textSize="25dp"
         android:onClick="openCognitiveList"
-        android:background="#ebe7e0"/>
+        android:background="@color/colorMaroon"/>
 
 </LinearLayout>

@@ -3,19 +3,17 @@ package com.example.disha.wearableproject;
 import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +26,7 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
 
     private static ImageView play;
     private static TextView counter;
+    private static WebView instructions;
     private static Thread thread;
     private static AlertDialog alertDialog;
     private float mMagnitude=0;
@@ -57,6 +56,17 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
 
         counter = (TextView) findViewById(R.id.ctrRest);
         play =(ImageView)findViewById(R.id.playbtnRest);
+
+        instructions = (WebView) findViewById(R.id.instruct);
+
+        String htmlText = " %s ";
+        String myData = "<html><body  style=\"text-align:justify;\">";
+        myData += "1. Posture: Hold the smartphone in your dominant hand, while standing with arm towards side.<br /> ";
+        myData += "2. Once you are ready Click on below Start Button to start your assessment.<br /> ";
+        myData += "3. This test will run for 20sec.<br /> ";
+        myData += "</body></html>";
+
+        instructions.loadData(String.format(htmlText, myData), "text/html", "utf-8");
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,9 +104,14 @@ public class TremorRestActivity extends AppCompatActivity implements SensorEvent
                             count++;
                         }
                         alertDialog.dismiss();
+
                         mSensorManager.unregisterListener(TremorRestActivity.this);
                         mSensorManager.unregisterListener(TremorRestActivity.this);
                         mDb.close();
+
+                        Intent i = new Intent(getApplicationContext(),TremorActivity.class);
+                        startActivity(i);
+                        finish();
                     }
                 });
                 thread.start();

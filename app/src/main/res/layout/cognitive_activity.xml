@@ -35,7 +35,6 @@
         android:layout_below="@+id/instr"
         android:paddingTop="15dip"
         android:paddingBottom="10dip"
-        android:text="@string/intensionTremor"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         android:maxLines="15"

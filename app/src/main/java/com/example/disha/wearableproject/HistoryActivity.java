@@ -21,7 +21,6 @@ import com.example.disha.wearableproject.helper.DatabaseHistoryHandler;
 
 public class HistoryActivity extends Activity{
 
-
     private EditText uAge;
     private EditText uGender;
     private EditText uRace;

@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
 
     private static ImageView play;
     private static TextView counter;
+    private static WebView instructions;
     private static Thread thread;
     private static AlertDialog alertDialog;
     private float mMagnitude = 0;
@@ -59,6 +61,17 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
 
         counter = (TextView) findViewById(R.id.ctrPostural);
         play =(ImageView)findViewById(R.id.playButtonPostural);
+
+        instructions = (WebView) findViewById(R.id.instruct);
+
+        String htmlText = " %s ";
+        String myData = "<html><body  style=\"text-align:justify;\">";
+        myData += "1. Posture: Hold the smartphone in your dominant hand, while standing with arms outstretch in front of you.<br /> ";
+        myData += "2. Once you are ready Click on below Start Button to start your assessment.<br /> ";
+        myData += "3. This test will run for 20sec.<br /> ";
+        myData += "</body></html>";
+
+        instructions.loadData(String.format(htmlText, myData), "text/html", "utf-8");
 
         play.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +112,10 @@ public class TremorPosturalActivity extends AppCompatActivity implements SensorE
                         mSensorManager.unregisterListener(TremorPosturalActivity.this);
                         mSensorManager.unregisterListener(TremorPosturalActivity.this);
                         mDb.close();
+
+                        Intent i = new Intent(getApplicationContext(),TremorActivity.class);
+                        startActivity(i);
+                        finish();
                     }
                 });
                 thread.start();

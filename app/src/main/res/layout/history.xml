@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5.0dp"
                     android:layout_weight="1"
-                    android:text="Gender"
+                    android:text="@string/gender"
                     android:textColor="#ffffff"
                     android:textSize="18dp" />
             </LinearLayout>

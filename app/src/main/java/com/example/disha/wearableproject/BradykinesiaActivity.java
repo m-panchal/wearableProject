@@ -1,13 +1,11 @@
 package com.example.disha.wearableproject;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import static com.example.disha.wearableproject.R.string.posturalTremor;
-import static com.example.disha.wearableproject.R.string.restTremor;
 
 public class BradykinesiaActivity extends AppCompatActivity {
 

@@ -14,8 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
-            android:label="Login to your Account">
+        <activity android:name=".LoginActivity"
+            android:label="mHealth-Monitor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,7 +40,7 @@
             android:name=".TremorActivity"
             android:label="@string/title_activity_tremor"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TremorRestActivity" />
+        <activity android:name=".TremorRestActivity"/>
         <activity android:name=".TremorPosturalActivity" />
         <activity android:name=".TremorIntentionActivity" />
         <activity android:name=".TremorKineticActivity" />

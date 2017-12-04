@@ -6,7 +6,7 @@
     android:background="@color/colorPrimary">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:id="@+id/topColorBox"
@@ -16,44 +16,51 @@
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
             android:src="@drawable/blue"
+            android:layout_weight="1.0"
             android:layout_marginLeft="2dp"/>
 
         <ImageView
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
             android:src="@drawable/red"
+            android:layout_weight="1.0"
             android:layout_marginLeft="@dimen/left_margin"/>
 
         <ImageView
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
             android:src="@drawable/green"
+            android:layout_weight="1.0"
             android:layout_marginLeft="@dimen/left_margin"/>
 
         <ImageView
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
             android:src="@drawable/yellow"
+            android:layout_weight="1.0"
             android:layout_marginLeft="@dimen/left_margin"/>
 
         <ImageView
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
             android:src="@drawable/orange"
+            android:layout_weight="1.0"
             android:layout_marginLeft="@dimen/left_margin"/>
 
         <ImageView
             android:layout_width="@dimen/color_box_size"
             android:layout_height="@dimen/color_box_size"
             android:src="@drawable/purple"
+            android:layout_weight="1.0"
             android:layout_marginLeft="@dimen/left_margin"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:orientation="horizontal"
         android:layout_below="@+id/topColorBox">
 
         <ImageView
@@ -101,7 +108,7 @@
         android:layout_centerInParent="true"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">

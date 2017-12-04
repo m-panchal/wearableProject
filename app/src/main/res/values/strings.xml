@@ -5,9 +5,9 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="restTremor">1. Posture: Hold the smartphone in your dominant hand, while standing with arm towards side. \n2. Once you are ready Click on below Start Button to start your assessment. \n3. This test will run for 20sec. </string>
-    <string name="posturalTremor">1. Posture: Hold the smartphone in your dominant hand, while standing with arms outstretch in front of you. \n2. Once you are ready Click on below Start Button to start your assessment. \n3. This test will run for 20sec. </string>
-    <string name="intensionTremor">1. Posture: Hold the smartphone in your dominant hand, while standing with both elbows out to the side and your hands as close as possible without touching. \n2. Once you are ready Click on below Start Button to start your assessment. \n3. This test will run for 20sec. </string>
-    <string name="kineticTremor">1. Posture: Hold the smartphone in your dominant hand, while standing. \n2.You need to touch your nose and then an imaginary target at arm\'s length, repeatedly in this test. \n3. Once you are ready Click on below Start Button to start your assessment. \n4. This test will run for 15sec. </string>
+
+
+    <string name="gender">Gender</string>
 
 </resources>
+
