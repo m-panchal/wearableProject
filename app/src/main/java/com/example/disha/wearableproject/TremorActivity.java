@@ -5,7 +5,6 @@ import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,10 +29,10 @@ public class TremorActivity extends AppCompatActivity {
         intentionTremor = (TextView) findViewById(R.id.tvIntention);
         kineticTremor = (TextView) findViewById(R.id.tvKinetic);
 
-        restCorrect = (ImageView) findViewById(R.id.ivRestCorrect);
-        posturalCorrect = (ImageView) findViewById(R.id.ivPosturalCorrect);
-        intentionCorrect = (ImageView) findViewById(R.id.ivIntentionCorrect);
-        kineticCorrect = (ImageView) findViewById(R.id.ivKineticCorrect);
+        //restCorrect = (ImageView) findViewById(R.id.ivRestCorrect);
+        //posturalCorrect = (ImageView) findViewById(R.id.ivPosturalCorrect);
+        //intentionCorrect = (ImageView) findViewById(R.id.ivIntentionCorrect);
+        //kineticCorrect = (ImageView) findViewById(R.id.ivKineticCorrect);
 
         // Set a click listener
         restTremor.setOnClickListener(new View.OnClickListener() {
