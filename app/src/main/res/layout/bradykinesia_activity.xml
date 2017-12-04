@@ -1,66 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <!--  Header  Starts-->
-    <LinearLayout android:id="@+id/header"
+    <LinearLayout
+        android:id="@+id/header"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dip"
+        android:orientation="horizontal"
         android:paddingBottom="20dip"
-        android:orientation="horizontal">
-    </LinearLayout>
+        android:paddingTop="5dip"></LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bradykinesia Assessment"
         android:layout_gravity="center"
+        android:text="Bradykinesia Assessment"
         android:textColor="@android:color/black"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:text="Select a Test:"
+        android:textColor="@android:color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center"
         android:layout_marginTop="15dp"
-        android:layout_gravity="center">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:src="@drawable/correct_mark"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tvRapidAltMove"
             style="@style/CategoryStyleSub"
-            android:textColor="@android:color/black"
+            android:background="@color/colorMaroon"
             android:text="Rapid alternating movements"
-            android:background="#ebe7e0"/>
+            android:textAlignment="center"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:src="@drawable/correct_mark"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/tvFingerTapping"
             style="@style/CategoryStyleSub"
-            android:textColor="@android:color/black"
-            android:text="Finger tapping" />
+            android:background="@color/colorWarmGrey"
+            android:text="Finger tapping"
+            android:textAlignment="center"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

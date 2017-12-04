@@ -29,10 +29,10 @@ public class TremorActivity extends AppCompatActivity {
         intentionTremor = (TextView) findViewById(R.id.tvIntention);
         kineticTremor = (TextView) findViewById(R.id.tvKinetic);
 
-        //restCorrect = (ImageView) findViewById(R.id.ivRestCorrect);
-        //posturalCorrect = (ImageView) findViewById(R.id.ivPosturalCorrect);
-        //intentionCorrect = (ImageView) findViewById(R.id.ivIntentionCorrect);
-        //kineticCorrect = (ImageView) findViewById(R.id.ivKineticCorrect);
+        restCorrect = (ImageView) findViewById(R.id.ivRestCorrect);
+        posturalCorrect = (ImageView) findViewById(R.id.ivPosturalCorrect);
+        intentionCorrect = (ImageView) findViewById(R.id.ivIntentionCorrect);
+        kineticCorrect = (ImageView) findViewById(R.id.ivKineticCorrect);
 
         // Set a click listener
         restTremor.setOnClickListener(new View.OnClickListener() {

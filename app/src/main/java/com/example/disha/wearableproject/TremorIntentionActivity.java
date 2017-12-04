@@ -79,14 +79,6 @@ public class TremorIntentionActivity extends AppCompatActivity implements Sensor
                 thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        SensorDataDbHelper dbHelper = new SensorDataDbHelper(TremorIntentionActivity.this);
-                        mDb = dbHelper.getWritableDatabase();
-                        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-                        mAccelSensor = mSensorManager.getDefaultSensor(TYPE_ACCELEROMETER);
-                        mGyroSensor = mSensorManager.getDefaultSensor(TYPE_GYROSCOPE);
-                        mSensorManager.registerListener(TremorIntentionActivity.this, mAccelSensor, 20);
-                        mSensorManager.registerListener(TremorIntentionActivity.this, mGyroSensor, 20);
-                        Log.d("Thread", "Started");
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -98,6 +90,14 @@ public class TremorIntentionActivity extends AppCompatActivity implements Sensor
                                         .show();
                             }
                         });
+                        Log.d("Thread", "Started");
+                        SensorDataDbHelper dbHelper = new SensorDataDbHelper(TremorIntentionActivity.this);
+                        mDb = dbHelper.getWritableDatabase();
+                        mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+                        mAccelSensor = mSensorManager.getDefaultSensor(TYPE_ACCELEROMETER);
+                        mGyroSensor = mSensorManager.getDefaultSensor(TYPE_GYROSCOPE);
+                        mSensorManager.registerListener(TremorIntentionActivity.this, mAccelSensor, 20);
+                        mSensorManager.registerListener(TremorIntentionActivity.this, mGyroSensor, 20);
                         while (count < 20) {
                             try {
                                 Thread.sleep(1000);
@@ -106,13 +106,10 @@ public class TremorIntentionActivity extends AppCompatActivity implements Sensor
                             }
                             count++;
                         }
-                        alertDialog.dismiss();
-                        mSensorManager.unregisterListener(TremorIntentionActivity.this);
                         mSensorManager.unregisterListener(TremorIntentionActivity.this);
                         mDb.close();
-
-                        Intent i = new Intent(getApplicationContext(),TremorActivity.class);
-                        startActivity(i);
+                        setResult(RESULT_OK, null);
+                        alertDialog.dismiss();
                         finish();
                     }
                 });
