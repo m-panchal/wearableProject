@@ -29,17 +29,18 @@
     </TextView>
 
     <!--  Instruction-->
-    <TextView android:id="@+id/instruct"
+    <WebView
+        android:id="@+id/instruct"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/instr"
-        android:paddingTop="15dip"
+        android:background="@android:color/transparent"
         android:paddingBottom="10dip"
+        android:paddingTop="15dip"
         android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:maxLines="15"
         android:orientation="horizontal">
-    </TextView>
+    </WebView>
 
 
     <TextView
