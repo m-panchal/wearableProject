@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import java.util.Random;
 
-public class ColorShapeTestActivity extends AppCompatActivity {
+public class CognitiveColorShapeTestActivity extends AppCompatActivity {
 
     private Integer[] shapeList = {R.drawable.triangle,
                                    R.drawable.right_arrow,

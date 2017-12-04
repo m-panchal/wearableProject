@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class CognitiveActivity extends AppCompatActivity {
 
@@ -18,7 +17,8 @@ public class CognitiveActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CognitiveActivity.this, ColorShapeTestActivity.class));
+                startActivity(new Intent(CognitiveActivity.this, CognitiveColorShapeTestActivity.class));
+                finish();
             }
         });
     }
